@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function user_as_required_install() {
+  module_set_weight('user_as_required', 100);
+}

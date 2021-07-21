@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * User as required
+ */
+
+/**
+ * Implements hook_entity_access().
+ */
+function user_as_required_entity_access(
+  \Drupal\Core\Entity\EntityInterface $entity,
+  $operation,
+  \Drupal\Core\Session\AccountInterface $account
+) {
+  // if($entity->getEntityType()->id() == 'user')
+  // {
+  // if(!$entity->hasRole('administrator'))
+  // {
+  // return \Drupal\Core\Access\AccessResult::forbidden();
+  // }
+  // }
+
+  $current_path = \Drupal::request()->getRequestUri();
+  if (preg_match('|/user/[0-9]+|uis', $current_path) === 1) {
+    \Drupal\user_as_required\Controller\UserAsRequiredController::userRedirect(
+      '/reports'
+    );
+    return;
+  }
+}

@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function as_required_install() {
+  module_set_weight('as_required', 100);
+}
